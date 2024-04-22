@@ -25,7 +25,7 @@ module.exports = {
     // 'plugin:vue/vue3-strongly-recommended', // Priority B: Strongly Recommended (Improving Readability)
     // 'plugin:vue/vue3-recommended', // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
 
-    'standard'
+    'prettier'
     
   ],
 
@@ -51,23 +51,6 @@ module.exports = {
 
   // add your custom rules here
   rules: {
-    
-    // allow async-await
-    'generator-star-spacing': 'off',
-    // allow paren-less arrow functions
-    'arrow-parens': 'off',
-    'one-var': 'off',
-    'no-void': 'off',
-    'multiline-ternary': 'off',
-
-    'import/first': 'off',
-    'import/named': 'error',
-    'import/namespace': 'error',
-    'import/default': 'error',
-    'import/export': 'error',
-    'import/extensions': 'off',
-    'import/no-unresolved': 'off',
-    'import/no-extraneous-dependencies': 'off',
     
     'prefer-promise-reject-errors': 'off',
 

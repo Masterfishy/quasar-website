@@ -2,7 +2,7 @@
   "name": "quasar-website",
   "version": "0.0.1",
   "description": "My portfolio website",
-  "productName": "ZachLongWebsite",
+  "productName": "Zach Long Website",
   "author": "Masterfishy <iamzachlong@gmail.com>",
   "private": true,
   "scripts": {
@@ -18,16 +18,14 @@
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
-    "eslint": "^8.11.0",
-    "eslint-plugin-vue": "^9.0.0",
-    "vite-plugin-checker": "^0.6.4",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
     "@quasar/app-vite": "^1.8.0",
     "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.14"
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "postcss": "^8.4.14",
+    "prettier": "^2.5.1",
+    "vite-plugin-checker": "^0.6.4"
   },
   "engines": {
     "node": "^20 || ^18 || ^16",
