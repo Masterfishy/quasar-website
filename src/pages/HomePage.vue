@@ -1,11 +1,11 @@
 <template>
-  <q-page class="bg-primary flex justify-center">
-    <div class="flex page">
+  <q-page class="bg-primary justify-center">
+    <div class="page">
       <div class="column items-stretch section">
         <div>
           <!-- <q-img alt="Oh hey, it's Zach Long" /> -->
-          <h4 style="color: white">Oh hey, it's</h4>
-          <h1 style="color: white">Zach Long</h1>
+          <h4>Oh hey, it's</h4>
+          <h1>Zach Long</h1>
         </div>
         <div>
           <q-btn
@@ -17,7 +17,7 @@
         </div>
       </div>
       <PageSection title="Portfolio">
-        <p style="color: white">
+        <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel eius
           provident, aut quisquam porro fugit quaerat dolorum quia nam odit
           excepturi neque accusamus ipsam doloremque accusantium iure sint dicta
@@ -25,20 +25,36 @@
         </p>
       </PageSection>
       <PageSection title="Experiences">
-        <p style="color: white">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo quas
-          praesentium ut corporis nulla. Atque doloribus repudiandae dignissimos
-          tempore tenetur deleniti similique autem quas necessitatibus,
-          accusantium nam cumque. Blanditiis, nemo.
-        </p>
+        <div class="q-gutter-md">
+          <div
+            class="column"
+            v-for="(experience, index) in experiences"
+            :key="index"
+          >
+            <div class="row experience_card">
+              <q-card-section
+                class="col-12 col-md-6 bg-accent experience_card-title"
+              >
+                <h3>{{ experience.title }}</h3>
+                <p>{{ experience.date }}</p>
+              </q-card-section>
+
+              <q-card-section class="col-12 col-md-6 bg-secondary">
+                <h3>{{ experience.role }}</h3>
+                <p>{{ experience.location }}</p>
+              </q-card-section>
+            </div>
+          </div>
+        </div>
       </PageSection>
       <PageSection title="Contact">
-        <p style="color: white">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo quas
-          praesentium ut corporis nulla. Atque doloribus repudiandae dignissimos
-          tempore tenetur deleniti similique autem quas necessitatibus,
-          accusantium nam cumque. Blanditiis, nemo.
-        </p>
+        <q-card v-for="(contact, index) in contacts" :key="index" flat>
+          <q-card-section class="bg-secondary">
+            <q-icon :name="contact.icon" />
+            <h3>{{ contact.title }}</h3>
+            <a>{{ contact.link }}</a>
+          </q-card-section>
+        </q-card>
       </PageSection>
     </div>
   </q-page>
@@ -50,10 +66,81 @@ import PageSection from "src/components/PageSection.vue";
 defineOptions({
   name: "HomePage",
 });
+
+// Blogs
+// const blogs = axios call
+
+// Experiences
+const experiences = [
+  {
+    title: "DCS Corporation",
+    role: "C++ Software Engineer",
+    date: "April 2023 - Present",
+    location: "Sterling Heights, MI",
+    link: "",
+  },
+  {
+    title: "King Abdullah University of Science and Technology",
+    role: "Research Intern",
+    date: "May 2021 - August 2021",
+    location: "Thuwal, Saudi Arabia",
+    link: "",
+  },
+  {
+    title: "Capital One",
+    role: "Software Engineer Intern",
+    date: "May 2020 - August 2020",
+    location: "Remote due to Covid-19",
+    link: "",
+  },
+  {
+    title: "Peraton",
+    role: "Software Engineer Co-Op",
+    date: "January 2020 - May 2020",
+    location: "Blacksburg, VA",
+    link: "",
+  },
+  {
+    title: "1901 Group",
+    role: "Software Test Engineer Intern",
+    date: "June 2019 - August 2019",
+    location: "Blacksburg, VA",
+    link: "",
+  },
+];
+
+// Contacts
+const contacts = [
+  {
+    title: "Email",
+    link: "zachtlong42 [at] gmail [dot] com",
+    icon: "email",
+  },
+  {
+    title: "LinkedIn",
+    link: "https://www.linkedin.com/in/zachlong-42/",
+    icon: "fa-linkedin",
+  },
+];
 </script>
 
 <style lang="scss">
 .page {
   margin: 0 10vw;
+}
+
+.experience_card {
+  border-radius: $generic-border-radius;
+  overflow: hidden;
+}
+
+.experience_card-title {
+  color: $primary;
+}
+
+.experience_card h3 {
+  line-height: normal;
+  font-size: 20px;
+  font-weight: 500;
 }
 </style>

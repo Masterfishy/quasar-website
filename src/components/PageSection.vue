@@ -1,5 +1,5 @@
 <template>
-  <div class="row q-gutter- q-pt-xl section">
+  <div class="row q-pt-xl">
     <div class="col-12 col-md-3">
       <h2 class="section_header">{{ props.title }}</h2>
     </div>
@@ -23,7 +23,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-.section_header {
-  font-size: 32px;
+.fill {
+  flex: 1 0 0;
 }
 </style>
