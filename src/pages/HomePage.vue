@@ -1,5 +1,5 @@
 <template>
-  <q-page class="bg-primary justify-center">
+  <q-page class="">
     <div class="page">
       <div class="column items-stretch section">
         <div>
@@ -48,13 +48,20 @@
         </div>
       </PageSection>
       <PageSection title="Contact">
-        <q-card v-for="(contact, index) in contacts" :key="index" flat>
-          <q-card-section class="bg-secondary">
-            <q-icon :name="contact.icon" />
-            <h3>{{ contact.title }}</h3>
-            <a>{{ contact.link }}</a>
-          </q-card-section>
-        </q-card>
+        <div class="row q-gutter-md">
+          <q-card
+            v-for="(contact, index) in contacts"
+            class="col"
+            :key="index"
+            flat
+          >
+            <q-card-section class="bg-secondary">
+              <q-icon :name="contact.icon" />
+              <h3>{{ contact.title }}</h3>
+              <a>{{ contact.link }}</a>
+            </q-card-section>
+          </q-card>
+        </div>
       </PageSection>
     </div>
   </q-page>
