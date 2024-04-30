@@ -22,8 +22,4 @@ const props = defineProps({
 });
 </script>
 
-<style lang="scss">
-.fill {
-  flex: 1 0 0;
-}
-</style>
+<style lang="scss"></style>

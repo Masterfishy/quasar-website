@@ -1,5 +1,5 @@
 <template>
-  <q-page class="">
+  <q-page id="home">
     <div class="page">
       <div class="column items-stretch section">
         <div>
@@ -10,10 +10,10 @@
         <div>
           <q-btn
             color="secondary"
-            icon-right="open_in_new"
+            :icon-right="matOpenInNew"
             label="Open Resume"
           />
-          <q-btn color="secondary" icon-right="email" label="Contact Me" />
+          <q-btn color="secondary" :icon-right="matEmail" label="Contact Me" />
         </div>
       </div>
       <PageSection title="Portfolio">
@@ -33,13 +33,13 @@
           >
             <div class="row experience_card">
               <q-card-section
-                class="col-12 col-md-6 bg-accent experience_card-title"
+                class="col-12 col-md bg-accent experience_card-title"
               >
                 <h3>{{ experience.title }}</h3>
                 <p>{{ experience.date }}</p>
               </q-card-section>
 
-              <q-card-section class="col-12 col-md-6 bg-secondary">
+              <q-card-section class="col-12 col-md bg-secondary">
                 <h3>{{ experience.role }}</h3>
                 <p>{{ experience.location }}</p>
               </q-card-section>
@@ -47,20 +47,35 @@
           </div>
         </div>
       </PageSection>
-      <PageSection title="Contact">
-        <div class="row q-gutter-md">
-          <q-card
+      <PageSection id="contact" title="Contact">
+        <div class="row q-gutter-xs">
+          <div
             v-for="(contact, index) in contacts"
-            class="col"
+            class="col-12 col-md text-center contact_card"
             :key="index"
             flat
           >
-            <q-card-section class="bg-secondary">
-              <q-icon :name="contact.icon" />
-              <h3>{{ contact.title }}</h3>
-              <a>{{ contact.link }}</a>
+            <q-card-section class="row items-center q-gutter-md">
+              <q-icon
+                :name="contact.icon"
+                class="contact_card-icon"
+                size="lg"
+              />
+
+              <q-btn
+                size="lg"
+                color="secondary"
+                class="contact_card-button"
+                :label="contact.title"
+                :icon-right="contact.actionIcon"
+                @click="contact.action()"
+              >
+                <q-tooltip>
+                  {{ contact.tooltip }}
+                </q-tooltip>
+              </q-btn>
             </q-card-section>
-          </q-card>
+          </div>
         </div>
       </PageSection>
     </div>
@@ -69,6 +84,13 @@
 
 <script setup>
 import PageSection from "src/components/PageSection.vue";
+
+import {
+  matEmail,
+  matOpenInNew,
+  matContentCopy,
+} from "@quasar/extras/material-icons";
+import { fabLinkedin } from "@quasar/extras/fontawesome-v6";
 
 defineOptions({
   name: "HomePage",
@@ -120,15 +142,29 @@ const experiences = [
 const contacts = [
   {
     title: "Email",
-    link: "zachtlong42 [at] gmail [dot] com",
-    icon: "email",
+    link: "zachtlong42@gmail.com",
+    icon: matEmail,
+    actionIcon: matContentCopy,
+    action: contactCopyEmail,
+    tooltip: "Copy my email to clipboard!",
   },
   {
     title: "LinkedIn",
     link: "https://www.linkedin.com/in/zachlong-42/",
-    icon: "fa-linkedin",
+    icon: fabLinkedin,
+    actionIcon: matOpenInNew,
+    action: contactOpenLinkedIn,
+    tooltip: "Open my LinkedIn!",
   },
 ];
+
+function contactCopyEmail() {
+  // TODO copy email to clipboard
+}
+
+function contactOpenLinkedIn() {
+  // TODO open linked in
+}
 </script>
 
 <style lang="scss">
@@ -141,13 +177,13 @@ const contacts = [
   overflow: hidden;
 }
 
-.experience_card-title {
-  color: $primary;
-}
-
 .experience_card h3 {
   line-height: normal;
   font-size: 20px;
   font-weight: 500;
+}
+
+.experience_card-title {
+  color: $primary;
 }
 </style>
