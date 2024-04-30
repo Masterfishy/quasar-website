@@ -15,7 +15,9 @@
     </q-page-container>
 
     <footer class="column items-center bg-accent q-gutter-lg q-mt-xl q-pa-xl">
-      <q-btn flat color="primary"><h3>Zach Long</h3></q-btn>
+      <q-btn to="/" color="primary">
+        <h3>Zach Long</h3>
+      </q-btn>
 
       <div>
         <div class="row q-gutter-x-md">
@@ -46,6 +48,7 @@
 <script setup>
 import { ref } from "vue";
 import { fabLinkedin, fabGithub } from "@quasar/extras/fontawesome-v6";
+import { scroll } from "quasar";
 
 defineOptions({
   name: "MainLayout",

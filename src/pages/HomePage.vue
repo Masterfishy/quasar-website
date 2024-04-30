@@ -13,7 +13,12 @@
             :icon-right="matOpenInNew"
             label="Open Resume"
           />
-          <q-btn color="secondary" :icon-right="matEmail" label="Contact Me" />
+          <q-btn
+            color="secondary"
+            :icon-right="matEmail"
+            label="Contact Me"
+            @click="scrollToId('contact')"
+          />
         </div>
       </div>
       <PageSection title="Portfolio">
@@ -92,9 +97,22 @@ import {
 } from "@quasar/extras/material-icons";
 import { fabLinkedin } from "@quasar/extras/fontawesome-v6";
 
+import { scroll, openURL, copyToClipboard, useQuasar } from "quasar";
+
 defineOptions({
   name: "HomePage",
 });
+
+const $q = useQuasar();
+
+const { getScrollTarget, setVerticalScrollPosition } = scroll;
+function scrollToId(id) {
+  const element = document.getElementById(id);
+  const target = getScrollTarget(element);
+  const offset = element.offsetTop;
+  const duration = 200;
+  setVerticalScrollPosition(target, offset, duration);
+}
 
 // Blogs
 // const blogs = axios call
@@ -146,7 +164,7 @@ const contacts = [
     icon: matEmail,
     actionIcon: matContentCopy,
     action: contactCopyEmail,
-    tooltip: "Copy my email to clipboard!",
+    tooltip: "Copy email to clipboard",
   },
   {
     title: "LinkedIn",
@@ -154,16 +172,20 @@ const contacts = [
     icon: fabLinkedin,
     actionIcon: matOpenInNew,
     action: contactOpenLinkedIn,
-    tooltip: "Open my LinkedIn!",
+    tooltip: "Message me on LinkedIn",
   },
 ];
 
 function contactCopyEmail() {
-  // TODO copy email to clipboard
+  copyToClipboard("zachtlong42@gmail.com").then(() => {
+    $q.notify("Email copied to clipboard!");
+  });
 }
 
 function contactOpenLinkedIn() {
-  // TODO open linked in
+  openURL("https://www.linkedin.com/in/zachlong-42/", undefined, {
+    noreferrer: true,
+  });
 }
 </script>
 
