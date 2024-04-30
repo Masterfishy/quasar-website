@@ -15,7 +15,7 @@
     </q-page-container>
 
     <footer class="column items-center bg-accent q-gutter-lg q-mt-xl q-pa-xl">
-      <q-btn to="/" color="primary">
+      <q-btn to="/" color="secondary">
         <h3>Zach Long</h3>
       </q-btn>
 
@@ -48,7 +48,6 @@
 <script setup>
 import { ref } from "vue";
 import { fabLinkedin, fabGithub } from "@quasar/extras/fontawesome-v6";
-import { scroll } from "quasar";
 
 defineOptions({
   name: "MainLayout",
@@ -59,16 +58,13 @@ const isHeaderElevated = ref(false);
 function onScroll(position) {
   isHeaderElevated.value = position > 0;
 }
-
-function goToTop() {
-  window.scrollTo(0, 0);
-}
 </script>
 
 <style lang="scss">
 footer {
   color: $primary;
 }
+
 footer h3 {
   font-size: 32px;
 }

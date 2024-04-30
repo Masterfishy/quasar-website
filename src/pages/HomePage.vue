@@ -1,24 +1,31 @@
 <template>
   <q-page id="home">
     <div class="page">
-      <div class="column items-stretch section">
+      <div class="column justify-center q-gutter-md hero">
         <div>
           <!-- <q-img alt="Oh hey, it's Zach Long" /> -->
           <h4>Oh hey, it's</h4>
           <h1>Zach Long</h1>
+          <h3>Software Developer</h3>
         </div>
         <div>
-          <q-btn
-            color="secondary"
-            :icon-right="matOpenInNew"
-            label="Open Resume"
-          />
-          <q-btn
-            color="secondary"
-            :icon-right="matEmail"
-            label="Contact Me"
-            @click="scrollToId('contact')"
-          />
+          <div class="row q-gutter-md">
+            <q-btn
+              :size="buttonSize"
+              color="accent"
+              text-color="primary"
+              :icon-right="matOpenInNew"
+              label="Open Resume"
+            />
+            <q-btn
+              :size="buttonSize"
+              color="accent"
+              text-color="primary"
+              :icon-right="matEmail"
+              label="Contact Me"
+              @click="scrollToId('contact')"
+            />
+          </div>
         </div>
       </div>
       <PageSection title="Portfolio">
@@ -28,6 +35,7 @@
           excepturi neque accusamus ipsam doloremque accusantium iure sint dicta
           unde.
         </p>
+        <!-- q-card to="/blogs/{blog.id}" -->
       </PageSection>
       <PageSection title="Experiences">
         <div class="q-gutter-md">
@@ -64,11 +72,11 @@
               <q-icon
                 :name="contact.icon"
                 class="contact_card-icon"
-                size="lg"
+                size="md"
               />
 
               <q-btn
-                size="lg"
+                :size="buttonSize"
                 color="secondary"
                 class="contact_card-button"
                 :label="contact.title"
@@ -112,7 +120,14 @@ function scrollToId(id) {
   const offset = element.offsetTop;
   const duration = 200;
   setVerticalScrollPosition(target, offset, duration);
+  // scroll(element, {
+  //   duration: 200,
+  //   offset: element.offsetTop,
+  //   easing: "easeInOutQuad",
+  // });
 }
+
+const buttonSize = "16px";
 
 // Blogs
 // const blogs = axios call
@@ -177,9 +192,17 @@ const contacts = [
 ];
 
 function contactCopyEmail() {
-  copyToClipboard("zachtlong42@gmail.com").then(() => {
-    $q.notify("Email copied to clipboard!");
-  });
+  copyToClipboard("zachtlong42@gmail.com")
+    .then(() => {
+      $q.notify({
+        message: "Email copied to clipboard!",
+      });
+    })
+    .catch(() => {
+      $q.notify({
+        message: "Could not copy email to clipboard!",
+      });
+    });
 }
 
 function contactOpenLinkedIn() {
@@ -192,6 +215,10 @@ function contactOpenLinkedIn() {
 <style lang="scss">
 .page {
   margin: 0 10vw;
+}
+
+.hero {
+  height: calc(100vh - $toolbar-min-height);
 }
 
 .experience_card {
