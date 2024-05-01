@@ -1,13 +1,11 @@
 <template>
   <q-page id="home">
     <div class="page">
-      <div class="column justify-center q-gutter-md hero">
-        <div>
-          <!-- <q-img alt="Oh hey, it's Zach Long" /> -->
-          <h4>Oh hey, it's</h4>
-          <h1>Zach Long</h1>
-          <h3>Software Developer</h3>
-        </div>
+      <div class="column justify-center q-gutter-lg hero">
+        <!-- <q-img alt="Oh hey, it's Zach Long" /> -->
+        <h4>Oh hey, it's</h4>
+        <h1>Zach Long</h1>
+        <h3>Software Developer</h3>
         <div>
           <div class="row q-gutter-md">
             <q-btn
@@ -29,13 +27,24 @@
         </div>
       </div>
       <PageSection title="Portfolio">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel eius
-          provident, aut quisquam porro fugit quaerat dolorum quia nam odit
-          excepturi neque accusamus ipsam doloremque accusantium iure sint dicta
-          unde.
-        </p>
-        <!-- q-card to="/blogs/{blog.id}" -->
+        <div class="row q-gutter-md">
+          <div
+            v-for="post in posts"
+            :key="post.postId"
+            class="col-12 col-md bg-secondary cursor-pointer post_card"
+            @click="$router.push(`posts/${post.postId}`)"
+          >
+            <q-card-section>
+              {{ post.title }}
+            </q-card-section>
+          </div>
+          <div
+            class="col-12 col-md bg-secondary cursor-pointer"
+            @click="$router.push('posts/')"
+          >
+            <q-card-section> Read more ... </q-card-section>
+          </div>
+        </div>
       </PageSection>
       <PageSection title="Experiences">
         <div class="q-gutter-md">
@@ -64,7 +73,7 @@
         <div class="row q-gutter-xs">
           <div
             v-for="(contact, index) in contacts"
-            class="col-12 col-md text-center contact_card"
+            class="col-12 col-md text-center"
             :key="index"
             flat
           >
@@ -129,8 +138,27 @@ function scrollToId(id) {
 
 const buttonSize = "16px";
 
-// Blogs
-// const blogs = axios call
+// Posts
+const posts = [
+  {
+    postId: 0,
+    title: "Post Title",
+    description: "This is the description!",
+    img: "image?",
+  },
+  {
+    postId: 1,
+    title: "Post Title",
+    description: "This is the description!",
+    img: "image?",
+  },
+  {
+    postId: 2,
+    title: "Post Title",
+    description: "This is the description!",
+    img: "image?",
+  },
+];
 
 // Experiences
 const experiences = [

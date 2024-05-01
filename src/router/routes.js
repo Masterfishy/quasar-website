@@ -7,6 +7,15 @@ const routes = [
     ]
   },
 
+  {
+    path: '/posts/',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/PortfolioPage.vue')},
+      { path: ':id', component: () => import('pages/PostPage.vue')}
+    ]
+  },
+
   // Always leave this as last one,
   // but you can also remove it
   {
