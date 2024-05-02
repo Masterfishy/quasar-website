@@ -30,12 +30,14 @@
         <div class="row q-gutter-md">
           <div
             v-for="post in posts"
-            :key="post.postId"
+            :key="post.id"
             class="col-12 col-md bg-secondary cursor-pointer post_card"
-            @click="$router.push(`posts/${post.postId}`)"
+            @click="$router.push(`posts/${post.id}`)"
           >
             <q-card-section>
-              {{ post.title }}
+              <h3>{{ post.title }}</h3>
+              <small>{{ post.created_at }}</small>
+              <p>{{ post.description }}</p>
             </q-card-section>
           </div>
           <div
@@ -114,6 +116,7 @@ import {
 } from "@quasar/extras/material-icons";
 import { fabLinkedin } from "@quasar/extras/fontawesome-v6";
 
+import { onMounted } from "vue";
 import { scroll, openURL, copyToClipboard, useQuasar } from "quasar";
 
 defineOptions({
@@ -139,26 +142,7 @@ function scrollToId(id) {
 const buttonSize = "16px";
 
 // Posts
-const posts = [
-  {
-    postId: 0,
-    title: "Post Title",
-    description: "This is the description!",
-    img: "image?",
-  },
-  {
-    postId: 1,
-    title: "Post Title",
-    description: "This is the description!",
-    img: "image?",
-  },
-  {
-    postId: 2,
-    title: "Post Title",
-    description: "This is the description!",
-    img: "image?",
-  },
-];
+const posts = [];
 
 // Experiences
 const experiences = [
