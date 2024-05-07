@@ -29,18 +29,19 @@
       <PageSection title="Portfolio">
         <div class="row q-gutter-md">
           <div
-            v-for="post in posts"
-            :key="post.id"
+            v-for="preview in postPreviewStore.previews"
+            :key="preview.id"
             class="col-12 col-md bg-secondary cursor-pointer post_card"
-            @click="$router.push(`posts/${post.id}`)"
+            @click="$router.push(`posts/${preview.id}`)"
           >
             <q-card-section>
-              <h3>{{ post.title }}</h3>
-              <small>{{ post.created_at }}</small>
-              <p>{{ post.description }}</p>
+              <h3>{{ preview.post_title }}</h3>
+              <small>{{ preview.created_at }}</small>
+              <p>{{ preview.description }}</p>
             </q-card-section>
           </div>
           <div
+            v-if="postPreviewStore.previews"
             class="col-12 col-md bg-secondary cursor-pointer"
             @click="$router.push('posts/')"
           >
@@ -119,9 +120,17 @@ import { fabLinkedin } from "@quasar/extras/fontawesome-v6";
 import { onMounted } from "vue";
 import { scroll, openURL, copyToClipboard, useQuasar } from "quasar";
 
+import { postPreviewStore } from "src/stores/store";
+
 defineOptions({
   name: "HomePage",
 });
+
+onMounted(() => {
+  postPreviewStore.fetchPreviews();
+});
+
+console.log(postPreviewStore.previews);
 
 const $q = useQuasar();
 
@@ -140,9 +149,6 @@ function scrollToId(id) {
 }
 
 const buttonSize = "16px";
-
-// Posts
-const posts = [];
 
 // Experiences
 const experiences = [
