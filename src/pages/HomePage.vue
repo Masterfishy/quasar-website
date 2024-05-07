@@ -28,18 +28,12 @@
       </div>
       <PageSection title="Portfolio">
         <div class="row q-gutter-md">
-          <div
+          <PostPreview
             v-for="preview in postPreviewStore.previews"
             :key="preview.id"
-            class="col-12 col-md bg-secondary cursor-pointer post_card"
+            :preview="preview"
             @click="$router.push(`posts/${preview.id}`)"
-          >
-            <q-card-section>
-              <h3>{{ preview.post_title }}</h3>
-              <small>{{ preview.created_at }}</small>
-              <p>{{ preview.description }}</p>
-            </q-card-section>
-          </div>
+          />
           <div
             v-if="postPreviewStore.previews"
             class="col-12 col-md bg-secondary cursor-pointer"
@@ -109,6 +103,7 @@
 
 <script setup>
 import PageSection from "src/components/PageSection.vue";
+import PostPreview from "src/components/PostPreview.vue";
 
 import {
   matEmail,
@@ -129,8 +124,6 @@ defineOptions({
 onMounted(() => {
   postPreviewStore.fetchPreviews();
 });
-
-console.log(postPreviewStore.previews);
 
 const $q = useQuasar();
 
@@ -231,10 +224,6 @@ function contactOpenLinkedIn() {
 </script>
 
 <style lang="scss">
-.page {
-  margin: 0 10vw;
-}
-
 .hero {
   height: calc(100vh - $toolbar-min-height);
 }
