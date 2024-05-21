@@ -17,7 +17,7 @@ export const postStore = reactive({
   async fetchPost(postId) {
     try {
       const post = await database.fetchPost(postId);
-      this.posts = { ...this.posts, [post.id]: post };
+      this.posts = { ...this.posts, [post[0].id]: post[0] };
     } catch (error) {
       console.error(`Error fetching post ${postId}:`, error);
     }

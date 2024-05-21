@@ -27,20 +27,19 @@
         </div>
       </div>
       <PageSection title="Portfolio">
-        <div class="row q-gutter-md">
+        <div class="row q-col-gutter-md">
           <PostPreview
-            v-for="preview in postPreviewStore.previews"
+            v-for="preview in postPreviewStore.previews.slice(0, 3)"
             :key="preview.id"
             :preview="preview"
+            class="col-12 col-sm-6"
             @click="$router.push(`posts/${preview.id}`)"
           />
-          <div
-            v-if="postPreviewStore.previews"
-            class="col-12 col-md bg-secondary cursor-pointer"
+          <PostPreview
+            :preview="readMorePreview"
+            class="col-12 col-sm-6"
             @click="$router.push('posts/')"
-          >
-            <q-card-section> Read more ... </q-card-section>
-          </div>
+          />
         </div>
       </PageSection>
       <PageSection title="Experiences">
@@ -124,6 +123,11 @@ defineOptions({
 onMounted(() => {
   postPreviewStore.fetchPreviews();
 });
+
+const readMorePreview = {
+  post_title: "",
+  description: "Read more...",
+};
 
 const $q = useQuasar();
 
@@ -231,12 +235,6 @@ function contactOpenLinkedIn() {
 .experience_card {
   border-radius: $generic-border-radius;
   overflow: hidden;
-}
-
-.experience_card h3 {
-  line-height: normal;
-  font-size: 20px;
-  font-weight: 500;
 }
 
 .experience_card-title {

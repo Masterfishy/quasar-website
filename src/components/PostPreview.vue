@@ -1,6 +1,6 @@
 <template>
-  <div class="col-12 col-md bg-secondary cursor-pointer post_card">
-    <q-card-section>
+  <div>
+    <q-card-section class="bg-secondary cursor-pointer post_card">
       <h3>{{ preview.post_title }}</h3>
       <small>{{ preview.created_at }}</small>
       <p>{{ preview.description }}</p>
@@ -20,3 +20,10 @@ const props = defineProps({
   },
 });
 </script>
+
+<style lang="scss">
+.post_card {
+  border-radius: $generic-border-radius;
+  height: 150px;
+}
+</style>
