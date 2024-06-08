@@ -1,22 +1,16 @@
+<!--
+------------------------------------------------------------------------------
+-- TEMPLATE
+------------------------------------------------------------------------------
+-->
 <template>
   <q-page id="home">
     <div class="page">
       <div class="flex hero">
         <div class="flex self-center" style="width: 100%">
           <div class="column q-gutter-lg" style="width: 100%">
-            <!-- <q-img alt="Oh hey, it's Zach Long" /> -->
-            <!-- <h4>Oh hey, it's</h4>
-            <h1 class="span-title">Zach Long</h1>
-            <h3>Software Developer</h3> -->
             <div class="svg-container" style="width: 100%">
-              <svg viewBox="0 0 100 40" class="responsive-svg">
-                <text fill="#fff" x="0" y="15" class="svg_hook">
-                  Oh hey it's
-                </text>
-                <text fill="#fff" x="0" y="30" class="svg_title">
-                  Zach Long
-                </text>
-              </svg>
+              <HeroTitle />
             </div>
             <div>
               <div class="row q-gutter-md">
@@ -122,39 +116,50 @@
   </q-page>
 </template>
 
+<!--
+------------------------------------------------------------------------------
+-- SCRIPTS
+------------------------------------------------------------------------------
+-->
 <script setup>
+///////////////////////////////////////////////////////////////////////////////
+// COMPONENTS
+///////////////////////////////////////////////////////////////////////////////
 import PageSection from "src/components/PageSection.vue";
 import PostPreview from "src/components/PostPreview.vue";
-
-import {
-  matEmail,
-  matOpenInNew,
-  matContentCopy,
-  matExpandCircleDown,
-  matKeyboardDoubleArrowDown,
-} from "@quasar/extras/material-icons";
-import { fabLinkedin } from "@quasar/extras/fontawesome-v6";
-
-import { onMounted } from "vue";
-import { scroll, openURL, copyToClipboard, useQuasar } from "quasar";
-
-import { postPreviewStore } from "src/stores/store";
+import HeroTitle from "src/components/HeroTitle.vue";
 
 defineOptions({
   name: "HomePage",
 });
 
-onMounted(() => {
-  postPreviewStore.fetchPreviews();
-});
+///////////////////////////////////////////////////////////////////////////////
+// ICONS
+///////////////////////////////////////////////////////////////////////////////
+import {
+  matEmail,
+  matOpenInNew,
+  matContentCopy,
+  matKeyboardDoubleArrowDown,
+} from "@quasar/extras/material-icons";
+import { fabLinkedin } from "@quasar/extras/fontawesome-v6";
 
-const readMorePreview = {
-  post_title: "",
-  description: "Read more...",
-};
+///////////////////////////////////////////////////////////////////////////////
+// Composables
+///////////////////////////////////////////////////////////////////////////////
+import { ref, onMounted } from "vue";
+import { scroll, openURL, copyToClipboard, useQuasar } from "quasar";
 
 const $q = useQuasar();
 
+///////////////////////////////////////////////////////////////////////////////
+// STORE
+///////////////////////////////////////////////////////////////////////////////
+import { postPreviewStore } from "src/stores/store";
+
+///////////////////////////////////////////////////////////////////////////////
+// HERO
+///////////////////////////////////////////////////////////////////////////////
 const { getScrollTarget, setVerticalScrollPosition } = scroll;
 function scrollToId(id) {
   const element = document.getElementById(id);
@@ -162,16 +167,21 @@ function scrollToId(id) {
   const offset = element.offsetTop;
   const duration = 200;
   setVerticalScrollPosition(target, offset, duration);
-  // scroll(element, {
-  //   duration: 200,
-  //   offset: element.offsetTop,
-  //   easing: "easeInOutQuad",
-  // });
 }
 
 const buttonSize = "16px";
 
-// Experiences
+///////////////////////////////////////////////////////////////////////////////
+// PORTFOLIO
+///////////////////////////////////////////////////////////////////////////////
+const readMorePreview = {
+  post_title: "",
+  description: "Read more...",
+};
+
+///////////////////////////////////////////////////////////////////////////////
+// EXPERIENCES
+///////////////////////////////////////////////////////////////////////////////
 const experiences = [
   {
     title: "DCS Corporation",
@@ -210,7 +220,9 @@ const experiences = [
   },
 ];
 
-// Contacts
+///////////////////////////////////////////////////////////////////////////////
+// CONTACT
+///////////////////////////////////////////////////////////////////////////////
 const contacts = [
   {
     title: "Email",
@@ -249,8 +261,20 @@ function contactOpenLinkedIn() {
     noreferrer: true,
   });
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// LIFECYCLE HOOKS
+///////////////////////////////////////////////////////////////////////////////
+onMounted(() => {
+  postPreviewStore.fetchPreviews();
+});
 </script>
 
+<!--
+------------------------------------------------------------------------------
+-- STYLES
+------------------------------------------------------------------------------
+-->
 <style lang="scss">
 .hero {
   height: calc(100vh - $toolbar-min-height);
@@ -268,24 +292,6 @@ function contactOpenLinkedIn() {
 .svg-container {
   width: 100%;
   font-family: inherit;
-}
-
-.responsive-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-$svg-title-font-size: 14px;
-$svg-title-base-width: 6.888;
-
-.svg_hook {
-  font-size: calc(0.3 * $svg-title-font-size);
-}
-
-.svg_title {
-  font-size: $svg-title-font-size;
-  letter-spacing: calc(100px - $svg-title-font-size * $svg-title-base-width);
 }
 
 .experience_card {
