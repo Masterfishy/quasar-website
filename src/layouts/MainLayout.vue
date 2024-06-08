@@ -1,8 +1,17 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header :elevated="isHeaderElevated">
-      <q-toolbar style="margin: 0 10vw; padding: 0 0">
-        <q-toolbar-title> ZACH LONG </q-toolbar-title>
+      <q-toolbar style="padding: 0 10vw">
+        <q-toolbar-title>
+          <q-btn :ripple="false" to="/" size="xl" padding="none" unelevated>
+            Zach Long
+          </q-btn>
+        </q-toolbar-title>
+
+        <q-tabs shrink indicator-color="accent" active-color="accent">
+          <q-route-tab to="/" label="Home" />
+          <q-route-tab to="/posts" label="Portfolio" />
+        </q-tabs>
       </q-toolbar>
     </q-header>
 

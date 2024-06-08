@@ -1,29 +1,51 @@
 <template>
   <q-page id="home">
     <div class="page">
-      <div class="column justify-center q-gutter-lg hero">
-        <!-- <q-img alt="Oh hey, it's Zach Long" /> -->
-        <h4>Oh hey, it's</h4>
-        <h1>Zach Long</h1>
-        <h3>Software Developer</h3>
-        <div>
-          <div class="row q-gutter-md">
-            <q-btn
-              :size="buttonSize"
-              color="accent"
-              text-color="primary"
-              :icon-right="matOpenInNew"
-              label="Open Resume"
-            />
-            <q-btn
-              :size="buttonSize"
-              color="accent"
-              text-color="primary"
-              :icon-right="matEmail"
-              label="Contact Me"
-              @click="scrollToId('contact')"
-            />
+      <div class="flex hero">
+        <div class="flex self-center" style="width: 100%">
+          <div class="column q-gutter-lg" style="width: 100%">
+            <!-- <q-img alt="Oh hey, it's Zach Long" /> -->
+            <!-- <h4>Oh hey, it's</h4>
+            <h1 class="span-title">Zach Long</h1>
+            <h3>Software Developer</h3> -->
+            <div class="svg-container" style="width: 100%">
+              <svg viewBox="0 0 100 40" class="responsive-svg">
+                <text fill="#fff" x="0" y="15" class="svg_hook">
+                  Oh hey it's
+                </text>
+                <text fill="#fff" x="0" y="30" class="svg_title">
+                  Zach Long
+                </text>
+              </svg>
+            </div>
+            <div>
+              <div class="row q-gutter-md">
+                <q-btn
+                  :size="buttonSize"
+                  color="accent"
+                  text-color="primary"
+                  :icon-right="matOpenInNew"
+                  label="Open Resume"
+                />
+                <q-btn
+                  :size="buttonSize"
+                  color="accent"
+                  text-color="primary"
+                  :icon-right="matEmail"
+                  label="Contact Me"
+                  @click="scrollToId('contact')"
+                />
+              </div>
+            </div>
           </div>
+        </div>
+        <div class="flex column items-center self-end" style="width: 100%">
+          <text class="text-secondary">Scroll for more</text>
+          <q-icon
+            :name="matKeyboardDoubleArrowDown"
+            class="text-secondary"
+            size="lg"
+          />
         </div>
       </div>
       <PageSection title="Portfolio">
@@ -51,13 +73,13 @@
           >
             <div class="row experience_card">
               <q-card-section
-                class="col-12 col-md bg-accent experience_card-title"
+                class="col-12 col-sm bg-accent experience_card-title"
               >
                 <h3>{{ experience.title }}</h3>
                 <p>{{ experience.date }}</p>
               </q-card-section>
 
-              <q-card-section class="col-12 col-md bg-secondary">
+              <q-card-section class="col-12 col-sm bg-secondary">
                 <h3>{{ experience.role }}</h3>
                 <p>{{ experience.location }}</p>
               </q-card-section>
@@ -108,6 +130,8 @@ import {
   matEmail,
   matOpenInNew,
   matContentCopy,
+  matExpandCircleDown,
+  matKeyboardDoubleArrowDown,
 } from "@quasar/extras/material-icons";
 import { fabLinkedin } from "@quasar/extras/fontawesome-v6";
 
@@ -230,6 +254,38 @@ function contactOpenLinkedIn() {
 <style lang="scss">
 .hero {
   height: calc(100vh - $toolbar-min-height);
+}
+
+.span-title {
+  width: 100%;
+  font-size: 18em;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 200px;
+  font-weight: 200;
+}
+
+.svg-container {
+  width: 100%;
+  font-family: inherit;
+}
+
+.responsive-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+$svg-title-font-size: 14px;
+$svg-title-base-width: 6.888;
+
+.svg_hook {
+  font-size: calc(0.3 * $svg-title-font-size);
+}
+
+.svg_title {
+  font-size: $svg-title-font-size;
+  letter-spacing: calc(100px - $svg-title-font-size * $svg-title-base-width);
 }
 
 .experience_card {
