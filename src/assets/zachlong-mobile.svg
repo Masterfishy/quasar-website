@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="84.155769mm"
+   height="75.190781mm"
+   viewBox="0 0 84.155769 75.190781"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="zachlong-mobile.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:export-bgcolor="#47474700" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-9.9999993,-99.999997)">
+    <text
+       xml:space="preserve"
+       style="font-size:26.0142px;font-family:'Cascadia Code';-inkscape-font-specification:'Cascadia Code';letter-spacing:8.12941px;fill:#ffffff;stroke-width:0.27098"
+       x="8.9661884"
+       y="137.37566"
+       id="text1"
+       inkscape:export-filename="zachlong-mobile.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       transform="scale(0.98294193,1.0173541)"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.2468px;font-family:Poppins;-inkscape-font-specification:Poppins;letter-spacing:7.96093px;stroke-width:0.27098"
+         x="8.9661884"
+         y="137.37566">Zach</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Poppins;-inkscape-font-specification:Poppins;letter-spacing:8.94233px;stroke-width:0.27098"
+         x="8.9661884"
+         y="171.23763"
+         id="tspan7" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.9987px;font-family:Poppins;-inkscape-font-specification:Poppins;letter-spacing:0.270807px;fill:#ffffff;stroke-width:0.270807"
+       x="9.6595287"
+       y="108.20895"
+       id="text3"
+       transform="scale(0.97861979,1.0218473)"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="font-size:12.9987px;letter-spacing:0.270807px;stroke-width:0.270807"
+         x="9.6595287"
+         y="108.20895">Oh hey it's</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.4583px;font-family:Poppins;-inkscape-font-specification:Poppins;letter-spacing:7.9169px;fill:#ffffff;stroke-width:0.417843"
+       x="7.8085585"
+       y="170.78993"
+       id="text8"
+       transform="scale(1.0156566,0.98458475)"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="font-size:26.4583px;letter-spacing:7.9169px;stroke-width:0.417843"
+         x="7.8085585"
+         y="170.78993">Long</tspan></text>
+  </g>
+</svg>

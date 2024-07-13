@@ -1,40 +1,37 @@
-<!--
-------------------------------------------------------------------------------
+<!-----------------------------------------------------------------------------
 -- TEMPLATE
-------------------------------------------------------------------------------
--->
+------------------------------------------------------------------------------>
 <template>
   <q-page id="home">
     <div class="page">
       <div class="flex hero">
-        <div class="flex self-center" style="width: 100%">
-          <div class="column q-gutter-lg" style="width: 100%">
-            <div class="svg-container" style="width: 100%">
-              <HeroTitle />
-            </div>
-            <div>
-              <div class="row q-gutter-md">
-                <q-btn
-                  :size="buttonSize"
-                  color="accent"
-                  text-color="primary"
-                  :icon-right="matOpenInNew"
-                  label="Open Resume"
-                />
-                <q-btn
-                  :size="buttonSize"
-                  color="accent"
-                  text-color="primary"
-                  :icon-right="matEmail"
-                  label="Contact Me"
-                  @click="scrollToId('contact')"
-                />
-              </div>
+        <div class="flex column items-start self-end" style="width: 100%">
+          <div style="width: 100%">
+            <HeroTitle />
+          </div>
+          <div>
+            <div class="row q-gutter-md">
+              <q-btn
+                :size="buttonSize"
+                color="accent"
+                text-color="primary"
+                :icon-right="matOpenInNew"
+                label="LinkedIn"
+                @click="contactOpenLinkedIn()"
+              />
+              <q-btn
+                :size="buttonSize"
+                color="accent"
+                text-color="primary"
+                :icon-right="matEmail"
+                label="Email Me"
+                @click="scrollToId('contact')"
+              />
             </div>
           </div>
         </div>
         <div class="flex column items-center self-end" style="width: 100%">
-          <text class="text-secondary">Scroll for more</text>
+          <text class="text-secondary">Scroll to read more!</text>
           <q-icon
             :name="matKeyboardDoubleArrowDown"
             class="text-secondary"
@@ -116,11 +113,9 @@
   </q-page>
 </template>
 
-<!--
-------------------------------------------------------------------------------
+<!-----------------------------------------------------------------------------
 -- SCRIPTS
-------------------------------------------------------------------------------
--->
+------------------------------------------------------------------------------>
 <script setup>
 ///////////////////////////////////////////////////////////////////////////////
 // COMPONENTS
@@ -270,11 +265,9 @@ onMounted(() => {
 });
 </script>
 
-<!--
-------------------------------------------------------------------------------
+<!-----------------------------------------------------------------------------
 -- STYLES
-------------------------------------------------------------------------------
--->
+------------------------------------------------------------------------------>
 <style lang="scss">
 .hero {
   height: calc(100vh - $toolbar-min-height);

@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh LpR lFr">
     <q-header :elevated="isHeaderElevated">
       <q-toolbar style="padding: 0 10vw">
         <q-toolbar-title>
@@ -8,12 +8,43 @@
           </q-btn>
         </q-toolbar-title>
 
-        <q-tabs shrink indicator-color="accent" active-color="accent">
-          <q-route-tab to="/" label="Home" />
-          <q-route-tab to="/posts" label="Portfolio" />
-        </q-tabs>
+        <div v-if="$q.screen.gt.xs">
+          <q-tabs shrink indicator-color="accent" active-color="accent">
+            <q-route-tab to="/" label="Home" />
+            <q-route-tab to="/posts" label="Portfolio" />
+          </q-tabs>
+        </div>
+        <div v-else>
+          <q-btn
+            flat
+            round
+            dense
+            icon="menu"
+            @click="mobileMenu = !mobileMenu"
+          />
+        </div>
       </q-toolbar>
     </q-header>
+
+    <q-drawer
+      side="right"
+      v-model="mobileMenu"
+      class="bg-primary"
+      :width="200"
+      overlay
+      elevated
+    >
+      <q-tabs
+        shrink
+        vertical
+        switch-indicator
+        indicator-color="accent"
+        active-color="accent"
+      >
+        <q-route-tab to="/" label="Home" />
+        <q-route-tab to="/posts" label="Portfolio" />
+      </q-tabs>
+    </q-drawer>
 
     <q-page-container>
       <router-view v-slot="{ Component }">
@@ -55,6 +86,7 @@
 </template>
 
 <script setup>
+import { useQuasar } from "quasar";
 import { ref } from "vue";
 import { fabLinkedin, fabGithub } from "@quasar/extras/fontawesome-v6";
 
@@ -62,7 +94,10 @@ defineOptions({
   name: "MainLayout",
 });
 
+const $q = useQuasar();
 const isHeaderElevated = ref(false);
+
+const mobileMenu = ref(false);
 
 function onScroll(position) {
   isHeaderElevated.value = position > 0;
