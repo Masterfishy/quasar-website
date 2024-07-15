@@ -5,7 +5,10 @@
   <q-page id="home">
     <div class="page">
       <div class="flex hero">
-        <div class="flex column items-start self-end" style="width: 100%">
+        <div
+          class="flex column items-start self-end q-gutter-lg"
+          style="width: 100%"
+        >
           <div style="width: 100%">
             <HeroTitle />
           </div>

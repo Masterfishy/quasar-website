@@ -1,14 +1,27 @@
 // Displays a post
 <template>
   <q-page>
-    <div class="page" v-if="post">
-      <h1>{{ post.title }}</h1>
-      <p>{{ post.content }}</p>
+    <div class="page">
+      <div v-if="post && !postStore.isFetching">
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.content }}</p>
+      </div>
+      <div
+        v-else-if="postStore.isFetching"
+        class="flex justify-center items-center full-width post-fetching-spinner"
+      >
+        <FetchIndicator />
+      </div>
+      <div v-else-if="!post && !postStore.isFetching">
+        <p>Failed to load the post brother</p>
+      </div>
     </div>
   </q-page>
 </template>
 
 <script setup>
+import FetchIndicator from "src/components/FetchIndicator.vue";
+
 import { postStore } from "src/stores/store";
 
 import { ref, watch } from "vue";
@@ -36,3 +49,9 @@ function getPost(postId) {
   }
 }
 </script>
+
+<style lang="scss">
+.post-fetching-spinner {
+  height: calc(100vh - $toolbar-min-height);
+}
+</style>
