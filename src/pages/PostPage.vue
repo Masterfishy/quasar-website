@@ -3,8 +3,16 @@
   <q-page>
     <div class="page">
       <div v-if="post && !postStore.isFetching">
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.content }}</p>
+        <q-btn
+          flat
+          no-caps
+          to="/posts"
+          label="Back to portfolio page"
+          icon="arrow_back"
+        />
+        <div class="post-html" v-html="renderMarkdown(post.content)"></div>
+        <!-- <h1>{{ post.title }}</h1>
+        <p>{{ post.content }}</p> -->
       </div>
       <div
         v-else-if="postStore.isFetching"
@@ -27,6 +35,9 @@ import { postStore } from "src/stores/store";
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
 
+import DOMPurify from "dompurify";
+import { marked } from "marked";
+
 defineOptions({
   name: "PostPage",
 });
@@ -48,10 +59,52 @@ function getPost(postId) {
     post.value = postStore.posts[postId];
   }
 }
+
+function renderMarkdown(markdown) {
+  const postHtml = DOMPurify.sanitize(marked.parse(markdown));
+
+  return postHtml ? postHtml : markdown;
+}
 </script>
 
 <style lang="scss">
 .post-fetching-spinner {
   height: calc(100vh - $toolbar-min-height);
+}
+
+.post-html {
+  font-size: 16px;
+}
+
+.post-html h1 {
+  font-size: 76px;
+}
+
+.post-html h2 {
+  font-size: 32px;
+  color: $accent;
+}
+
+.post-html h3 {
+  font-size: 24px;
+}
+
+.post-html h4 {
+  font-size: 20px;
+}
+
+.post-html a {
+  color: $accent;
+  transition: $generic-hover-transition;
+}
+
+.post-html a:hover {
+  color: white;
+  transition: $generic-hover-transition;
+}
+
+.post-html code {
+  background-color: $secondary;
+  // color: $accent;
 }
 </style>

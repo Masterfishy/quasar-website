@@ -14,6 +14,8 @@
   "dependencies": {
     "@quasar/extras": "^1.16.4",
     "@supabase/supabase-js": "^2.43.0",
+    "dompurify": "^3.1.6",
+    "marked": "^14.1.2",
     "pinia": "^2.1.7",
     "quasar": "^2.8.0",
     "vue": "^3.4.18",

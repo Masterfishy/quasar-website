@@ -1,9 +1,9 @@
 <template>
   <q-layout view="hHh LpR lFf">
     <q-header :elevated="isHeaderElevated">
-      <q-toolbar style="padding: 0 10vw">
+      <q-toolbar class="toolbar">
         <q-toolbar-title>
-          <q-btn :ripple="false" to="/" size="xl" padding="none" unelevated>
+          <q-btn :ripple="false" to="/" size="xl" padding="small" unelevated>
             Zach Long
           </q-btn>
         </q-toolbar-title>
@@ -105,6 +105,12 @@ function onScroll(position) {
 </script>
 
 <style lang="scss">
+@use "sass:map";
+
+.toolbar {
+  padding: 0 10vw 0 calc(10vw - map.get($space-md, "x"));
+}
+
 footer {
   color: $primary;
 }
