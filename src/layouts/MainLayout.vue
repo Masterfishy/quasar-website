@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHh LpR lFf">
-    <q-header :elevated="isHeaderElevated">
+    <q-header :elevated="isHeaderElevated" class="header">
       <q-toolbar class="toolbar">
         <q-toolbar-title>
           <q-btn :ripple="false" to="/" size="xl" padding="small" unelevated>
@@ -106,6 +106,10 @@ function onScroll(position) {
 
 <style lang="scss">
 @use "sass:map";
+
+.header {
+  transition: $generic-hover-transition;
+}
 
 .toolbar {
   padding: 0 10vw 0 calc(10vw - map.get($space-md, "x"));
