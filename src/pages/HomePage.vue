@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="flex column items-center self-end" style="width: 100%">
-          <text class="text-secondary">Scroll to read more!</text>
+          <text class="text-secondary">Scroll to see more!</text>
           <q-icon
             :name="matKeyboardDoubleArrowDown"
             class="text-secondary"
@@ -67,15 +67,24 @@
           >
             <div class="row experience_card">
               <q-card-section
-                class="col-12 col-sm bg-accent experience_card-title"
+                class="col-12 col-sm-6 bg-accent experience_card-title"
               >
                 <h3>{{ experience.title }}</h3>
+                <h3>{{ experience.role }}</h3>
                 <p>{{ experience.date }}</p>
+                <p>{{ experience.location }}</p>
               </q-card-section>
 
-              <q-card-section class="col-12 col-sm bg-secondary">
-                <h3>{{ experience.role }}</h3>
-                <p>{{ experience.location }}</p>
+              <q-card-section class="col-12 col-sm-6 bg-secondary">
+                <h3>Skills</h3>
+                <ul>
+                  <li
+                    v-for="(skill, skill_index) in experience.skills"
+                    :key="skill_index"
+                  >
+                    {{ skill }}
+                  </li>
+                </ul>
               </q-card-section>
             </div>
           </div>
@@ -187,6 +196,18 @@ const experiences = [
     date: "April 2023 - Present",
     location: "Sterling Heights, MI",
     link: "",
+    skills: [
+      "C++",
+      "Python",
+      "Conan",
+      "CMake",
+      "Git",
+      "Scrum",
+      "CI/CD",
+      "Jenkins",
+      "Jira",
+      "Confluence",
+    ],
   },
   {
     title: "King Abdullah University of Science and Technology",
@@ -194,6 +215,14 @@ const experiences = [
     date: "May 2021 - August 2021",
     location: "Thuwal, Saudi Arabia",
     link: "",
+    skills: [
+      "R",
+      "RStudio",
+      "C++",
+      "Git",
+      "Research",
+      "Cross-Discipline Collaboration",
+    ],
   },
   {
     title: "Capital One",
@@ -201,6 +230,15 @@ const experiences = [
     date: "May 2020 - August 2020",
     location: "Remote due to Covid-19",
     link: "",
+    skills: [
+      "Vue.js",
+      "Git",
+      "Scrum",
+      "CI/CD",
+      "Jenkins",
+      "Jira",
+      "Confluence",
+    ],
   },
   {
     title: "Peraton",
@@ -208,6 +246,7 @@ const experiences = [
     date: "January 2020 - May 2020",
     location: "Blacksburg, VA",
     link: "",
+    skills: ["React.js", "C++", "Java", "Scrum", "Jira"],
   },
   {
     title: "1901 Group",
@@ -215,6 +254,7 @@ const experiences = [
     date: "June 2019 - August 2019",
     location: "Blacksburg, VA",
     link: "",
+    skills: ["Angular.js", "Selenium", "Scrum", "Redmine"],
   },
 ];
 
@@ -293,6 +333,10 @@ onMounted(() => {
 .experience_card {
   border-radius: $generic-border-radius;
   overflow: hidden;
+}
+
+.experience_card p {
+  margin: 0;
 }
 
 .experience_card-title {
