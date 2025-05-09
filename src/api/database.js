@@ -1,7 +1,10 @@
 import supabase from "./supabase";
+import localbase from "./localbase";
 
 export async function fetchPostPreviews()
 {
+    localbase.localFetchPostPreviews();
+
     let { data: post_previews, error } = await supabase
         .from('post_previews')
         .select('*');
